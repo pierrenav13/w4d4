@@ -20,7 +20,4 @@ describe 'Deck' do
             expect(d.deck_arr).to_not be(d.shuffle)
         end
     end
-
-
-
 end

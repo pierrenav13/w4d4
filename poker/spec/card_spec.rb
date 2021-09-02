@@ -20,11 +20,5 @@ describe 'Card' do
                 expect{Card.new(4, :nike)}.to raise_error("not a valid card suit")
             end
         end
-
-
-
-    
     end
-
-
 end
