@@ -48,4 +48,9 @@ class Hand
         hash.each {|k, v| return true if v == 3}
         false
     end
+
+    def straight?
+        arr = [:a,2,3,4,5,6,7,8,9,10,:j,:q,:k,:a]
+
+    end
 end
