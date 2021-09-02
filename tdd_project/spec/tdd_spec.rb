@@ -15,9 +15,30 @@ describe "Array" do
         end
     end
 
-
-
-
-
 end
 
+
+describe "#my_transpose" do
+    it "transposes the array" do
+        rows = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]
+        ]
+
+        cols = [
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8]
+        ]
+        expect(my_transpose(rows)).to eq(cols)
+    end
+end
+
+describe '#stock_picker' do
+    it 'picks the best day to buy and sell stocks' do
+        arr = [1000, 20, 400, 100]
+        expect(stock_picker(arr)).to eq([1, 2])
+    end
+
+end
