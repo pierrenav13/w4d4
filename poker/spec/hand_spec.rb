@@ -51,4 +51,77 @@ describe 'Hand' do
         end
     end
 
+    describe "#two_pair?" do 
+        it "should return true if there's two sets of matching card values " do 
+            h.dealt_hand = [
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(4, :hearts),
+            Card.new(4, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.two_pair?).to be(true)
+        end
+        it "should return false if there are less than 2 matching pairs" do 
+            h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(5, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.two_pair?).to be(false)
+        end
+    end
+
+    describe '#three_of_a_kind?' do
+        it 'should return true if dealt_hand has 3 matching values' do
+            h.dealt_hand = [
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(4, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.three_of_a_kind?).to be(true)
+        end
+
+        it 'should return false if dealt_hand has less than 3 matching values' do
+            h.dealt_hand = [
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(4, :hearts),
+            Card.new(4, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.three_of_a_kind?).to be(false)
+        end
+    end
+
+    describe '#straight?' do
+        it 'should return true if there are 5 concurrent values' do
+            h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.straight?).to be(true)
+        end
+
+        it 'should return false if there are not 5 concurrent values' do
+            h.dealt_hand = [
+            Card.new(8, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.straight?).to be(false)
+        end
+
+    end
+
+
 end

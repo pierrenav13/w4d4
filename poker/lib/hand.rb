@@ -27,4 +27,25 @@ class Hand
         end
         count == 1
     end
+
+    def two_pair?
+        count = 0
+        @dealt_hand.each_with_index do |card1, i|
+            @dealt_hand.each_with_index do |card2, j|
+                if i < j
+                    count += 1 if card1.value == card2.value 
+                end
+            end
+        end
+        count == 2
+    end
+
+    def three_of_a_kind?
+        hash = Hash.new(0)
+        @dealt_hand.each do |card|
+            hash[card.value] += 1
+        end
+        hash.each {|k, v| return true if v == 3}
+        false
+    end
 end
