@@ -10,6 +10,13 @@ describe 'Deck' do
         end
     end 
 
+    describe "#shuffle" do
+        it "should rearrange the order of the deck of cards" do
+            expect(d.deck_arr).to_not eq(d.shuffled_deck)
+            expect(d.shuffled_deck.length).to eq(52)
+        end
+    end
+
 
 
 end
