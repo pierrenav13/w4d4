@@ -48,7 +48,7 @@ def stock_picker(array)
 end
 
 class TowersOfHanoi
-    attr_reader :pile_1, :pile_2, :pile_3
+    attr_accessor :pile_1, :pile_2, :pile_3
     def initialize
         @pile_1 = [4,3,2,1]
         @pile_2 = []
@@ -77,8 +77,8 @@ class TowersOfHanoi
         end
       
     end
-
-
-
-
+    
+    def won?
+        (@pile_1 == []) && (@pile_2 == []) && (@pile_3 == [4,3,2,1])
+    end
 end

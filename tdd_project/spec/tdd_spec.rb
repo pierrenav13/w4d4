@@ -63,4 +63,13 @@ describe "TowersOfHanoi" do
             expect(t.pile_3).to eq([])
         end
     end
+
+    describe "#won?" do 
+        it "player won the game?" do
+            t.pile_1 = []
+            t.pile_2 = []
+            t.pile_3 = [4,3,2,1]
+            expect(t.won?).to eq(true)
+        end
+    end
 end
