@@ -50,7 +50,48 @@ class Hand
     end
 
     def straight?
+        hash1 = Hash.new(0)
+        @dealt_hand.each { |card| hash1[card.value] += 1}
+        i = 0
+        j = 4
         arr = [:a,2,3,4,5,6,7,8,9,10,:j,:q,:k,:a]
-
+        until j == arr.length - 1
+            hash2 = Hash.new(0)
+            arr[i..j].each { |card| hash2[card] += 1}
+            return true if hash1 == hash2
+            i += 1
+            j += 1
+        end
+        false
     end
+
+    def flush?
+        hash = Hash.new(0)
+        @dealt_hand.each{ |card| hash[card.suit] += 1}
+        hash.each{ |k,v| return true if v == 5 }
+        false
+    end
+
+    def full_house?
+        hash = Hash.new(0)
+        @dealt_hand.each {|card| hash[card.value] += 1}
+        if three_of_a_kind?
+            hash.each { |k,v| return true if v == 2}
+        end
+        false
+    end
+
+    def four_of_a_kind?  
+    hash = Hash.new(0)
+
+    @dealt_hand.each { |card| hash[card.value] += 1 
+    hash.each {|k, v| return true if v == 4}
+    false
+    
+    end
+
+    def straight_flush?
+        flush? && straight?
+    end
+    
 end

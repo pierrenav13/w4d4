@@ -123,5 +123,100 @@ describe 'Hand' do
 
     end
 
+    describe '#flush?' do 
+        it "should return true if all 5 cards have identical suits" do 
+             h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.flush?).to be(true)
+        end
+        it "should return false if less than 5 cards have identical suits" do
+             h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(10, :spades),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ] 
+            expect(h.flush?).to be(false)
+        end
+    end
+    
+    describe "#full_house?" do 
+        it "should return true when there is a full house" do 
+            h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(9, :spades),
+            Card.new(9, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:q, :hearts)
+            ] 
+            expect(h.full_house?).to be(true)
+        end
+        it "should return false if there is not a full house" do 
+             h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(9, :spades),
+            Card.new(8, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:q, :hearts)
+            ] 
+            expect(h.full_house?).to be(false)
+        end
+    end
+
+     describe '#four_of_a_kind?' do
+        it 'should return true if dealt_hand has 4 matching values' do
+            h.dealt_hand = [
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.four_of_a_kind?).to be(true)
+        end
+
+        it 'should return false if dealt_hand has less than 4 matching values' do
+            h.dealt_hand = [
+            Card.new(2, :hearts),
+            Card.new(2, :hearts),
+            Card.new(4, :hearts),
+            Card.new(4, :hearts),
+            Card.new(7, :hearts)
+            ]
+            expect(h.four_of_a_kind?).to be(false)
+        end
+    end
+
+     describe '#straight_flush?' do
+        it 'should return true if straight and flush are true' do
+            h.dealt_hand = [
+            Card.new(9, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.straight_flush?).to be(true)
+        end
+
+        it 'should return false if straight and flush are not true' do
+            h.dealt_hand = [
+            Card.new(8, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.straight_flush?).to be(false)
+        end
+    end
+    
+
 
 end
