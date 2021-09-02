@@ -101,11 +101,11 @@ describe 'Hand' do
     describe '#straight?' do
         it 'should return true if there are 5 concurrent values' do
             h.dealt_hand = [
-            Card.new(9, :hearts),
+            Card.new(:k, :hearts),
             Card.new(10, :hearts),
             Card.new(:j, :hearts),
             Card.new(:q, :hearts),
-            Card.new(:k, :hearts)
+            Card.new(9, :hearts)
             ]
             expect(h.straight?).to be(true)
         end
@@ -193,10 +193,10 @@ describe 'Hand' do
         end
     end
 
-     describe '#straight_flush?' do
+    describe '#straight_flush?' do
         it 'should return true if straight and flush are true' do
             h.dealt_hand = [
-            Card.new(9, :hearts),
+            Card.new(:a, :hearts),
             Card.new(10, :hearts),
             Card.new(:j, :hearts),
             Card.new(:q, :hearts),
@@ -215,6 +215,46 @@ describe 'Hand' do
             ]
             expect(h.straight_flush?).to be(false)
         end
+    end
+
+    describe "#royal_flush?" do
+        it "should return true if you have a royal flush" do 
+              h.dealt_hand = [
+            Card.new(10, :hearts),
+            Card.new(:a, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.royal_flush?).to be(true)
+        end
+        it "should return false if you do not have a royal flush" do 
+              h.dealt_hand = [
+            Card.new(8, :hearts),
+            Card.new(10, :hearts),
+            Card.new(:j, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:k, :hearts)
+            ]
+            expect(h.royal_flush?).to be(false)
+        end
+    end
+
+    describe "#hand_value" do 
+        it "should return a value based off your best possible hand" do
+               h.dealt_hand = [
+            Card.new(10, :hearts),
+            Card.new(:k, :hearts),
+            Card.new(7, :hearts),
+            Card.new(:q, :hearts),
+            Card.new(:j, :spades)
+            ]
+            expect(h.hand_value).to eq(1.0/2)
+        end
+
+
+
+
     end
     
 
