@@ -42,3 +42,25 @@ describe '#stock_picker' do
     end
 
 end
+
+describe "TowersOfHanoi" do 
+    subject(:t) { TowersOfHanoi.new}
+    describe "#initialize" do 
+        it "should create a pile_1 instance variable" do 
+            expect(t.pile_1).to eq([4,3,2,1])
+        end
+        it "should create an empty array for other piles" do
+            expect(t.pile_2).to eq([])
+            expect(t.pile_3).to eq([])
+        end
+    end
+
+    describe "#move" do
+        it "should move the top disc to another pile" do 
+            t.move([1,2])
+            expect(t.pile_1).to eq([4,3,2])
+            expect(t.pile_2).to eq([1])
+            expect(t.pile_3).to eq([])
+        end
+    end
+end

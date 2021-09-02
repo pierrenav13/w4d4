@@ -46,3 +46,39 @@ def stock_picker(array)
     [b, c]
 
 end
+
+class TowersOfHanoi
+    attr_reader :pile_1, :pile_2, :pile_3
+    def initialize
+        @pile_1 = [4,3,2,1]
+        @pile_2 = []
+        @pile_3 = []
+    end
+
+    def move(input)
+        x,y = input 
+        case x
+        when 1
+            popped = @pile_1.pop   
+        when 2
+            popped = @pile_2.pop 
+        when 3
+            popped = @pile_3.pop
+        end
+
+
+        case y
+        when 1
+            @pile_1 << popped
+        when 2
+            @pile_2 << popped
+        when 3
+            @pile_3 << popped
+        end
+      
+    end
+
+
+
+
+end
